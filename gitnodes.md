@@ -44,6 +44,7 @@ $ git config -e --global   # 针对系统上所有仓库
 git push <远程主机名> <本地分支名>:<远程分支名>
 git push <远程主机名> <本地分支名> #如果本地分支名与远程分支名相同，则可以省略冒号
 git push origin master
+git push origin --delete summer #删除远程分支
 ```
 
 ## git log
@@ -53,6 +54,7 @@ git log --oneline #查看历史记录的简洁的版本
 git log --reverse --oneline #用 --reverse 参数来逆向显示所有日志
 git log --author=Linus --oneline #查找指定用户的提交日志
 git log -2 #查看后两条
+git log --oneline --graph #查看版本路线
 ```
 
 ## git rm
@@ -115,6 +117,8 @@ git reset --soft HEAD~1    #最近的一次提交撤回到缓存区
 `git branch -d (branchname)`
 创建并切换到所创建的分支
 `git checkout -b test`
+查看本地和远程分支
+`git branch -av`
 
 ## git merge
 合并分支到当前分支
@@ -122,6 +126,19 @@ git reset --soft HEAD~1    #最近的一次提交撤回到缓存区
 冲突时保留当前分支的代码
 `git merge --abort`
 
+## git fetch
+用于从远程获取代码库
+```
+git fetch origin master                #从远程的origin仓库的master分支下载代码到本地的origin maste
+git log -p master.. origin/master      #比较本地的仓库和远程参考的区别
+git merge origin/master                #把远程下载下来的代码合并到本地仓库，远程的和本地的合并
+```
 
+## git pull
+拉取远程分支更新到本地仓库
+```
+git pull = git fetch + git merge
+git pull origin master:branchtest #将远程主机origin的master分支拉取过来，与本地的branchtest分支合并。
+```
 
 
